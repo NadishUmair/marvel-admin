@@ -3,8 +3,8 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import ProductAddModal from './addProductModal';
 import UpdateProductModal from './updateProduct';
+import SideDrawer from './sideDrawer';
 
-// Sample user data
 const users = [
   {
     username: 'john_doe',
@@ -25,6 +25,7 @@ const users = [
 
 const ProductsComponent = () => {
   const [showModal,setShowModal]=useState(false);
+  
   const [showUpdateProduct,setShowUpdateProduct]=useState(false);
 
   const closeModal=()=>{
@@ -40,16 +41,11 @@ const ProductsComponent = () => {
 
   return (
     <div className='flex justify-between  w-full '>
-      <div className=' w-[30%]  h-full p-4'>
-    <div>
-        <ul className='flex flex-col'>
-            <Link href='/dashboard-users' className='cursor-pointer  p-2 rounded-md font-semibold'>Users</Link>
-            <Link href='/dashboard-products' className='cursor-pointer bg-gray-200 p-2 rounded-md mt-4 font-semibold'>Products</Link>   
-        </ul>
-    </div>
-  </div>
+      
+      <SideDrawer page={"products"} />
+ 
 
-    <div className='w-[70%] py-[20px] '>
+    <div className='w-[80%] md:w-[70%]py-[20px] '>
       <h1 className='text-center text-[2rem] font-bold'>Products</h1>
       <div className='flex justify-end md:px-[20px]  '>
         <button onClick={handleModal} className='bg-green-700 p-2 text-white rounded-md'>Add Product</button>

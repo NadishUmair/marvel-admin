@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import UpdateUserModal from './updateUser';
+import SideDrawer from './sideDrawer';
 
 // Sample user data
 const users = [
@@ -51,49 +52,46 @@ const closeModal=()=>{
 
   return (
     <div className='flex'>
-    <section className=' w-[30%] h-full p-4'>
-  <div>
-  <ul className='flex flex-col'>
-            <Link href='/dashboard-users' className='cursor-pointer  bg-gray-200 p-2 rounded-md font-semibold'>Users</Link>
-            <Link href='/dashboard-products' className='cursor-pointer  p-2 rounded-md mt-4 font-semibold'>Products</Link>   
-        </ul>
-  </div>
-</section>
+    
+  <SideDrawer page={"users"}/>
 
-  <div className='w-[70%] py-[20px]'>
+
+  <div className='w-[80%]  py-[20px] px-[10px]'>
     <h1 className='text-center font-bold text-[2rem]'>User List</h1>
     <div className='overflow-auto'>
-    <table border="1" className='w-full' cellPadding="10">
-      <thead>
-        <tr className='text-[12px] md:text-[16px]'>
+    <table className='w-full border' cellPadding="10">
+      <thead className='bg-blue-600 border text-white'>
+        <tr className='text-[12px] md:text-[12px]'>
           <th className='text-start'>Profile Photo</th>
           <th className='text-start'>Username</th>
           <th className='text-start'>Password</th>
           <th className='text-start'>Withdraw Password</th>
-          <th className='text-start'>Invite code</th>
+          <th className='text-start'>Account Balnce</th>
           <th className='text-start'>Phone</th>
           <th className='text-start'>Email</th>
-          <th className='text-start'>Actions</th>
+          {/* <th className='text-start'>Actions</th> */}
+          <th className='text-start'>Current Tasks</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className='border'>
         {users.map((user, index) => (
           <tr key={index}>
-            <td>
+            <td className='border '>
               <img
                 src={user.profilePhoto}
                 alt={`${user.username}'s profile`}
                 style={{ width: '50px', height: '50px', borderRadius: '50%' }}
               />
             </td>
-            <td>{user.username}</td>
-            <td>{user.password}</td>
-            <td>{user.withdrawpass}</td>
+            <td className='border '>{user.username}</td>
+            <td className='border '>{user.password}</td>
+            <td className='border '>{user.withdrawpass}</td>
             
-            <td>{user.invitecode}</td>
-            <td>{user.phone}</td>
-            <td>{user.email}</td>
-            <td className='text-[12px] md:text-[16px] flex'><button className='bg-red-600 text-white px-2 py-1 rounded-md'>Delete</button><button className='bg-green-600 ml-2 text-white px-2 py-1 rounded-md' onClick={handleUserModal}>Update</button></td>
+            <td className='border '>{user.invitecode} <button className='border btn text-[10px] bg-gray-300 p-1 rounded-sm hover:bg-gray-200  '>Update</button></td>
+            <td className='border '>{user.phone}</td>
+            <td className='border '>{user.email}</td>
+            <td className='border '><button className='border btn text-[12px] bg-gray-300 p-2 rounded-sm hover:bg-gray-200  '>view & Update</button></td>
+            {/* <td className='text-[12px]  flex'><button className='bg-red-600 text-white px-2 py-1 rounded-md'>Delete</button><button className='bg-green-600 ml-2 text-white px-2 py-1 rounded-md' onClick={handleUserModal}>Update</button></td> */}
             
           </tr>
         ))}
