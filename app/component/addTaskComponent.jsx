@@ -116,7 +116,7 @@ const closeModal=()=>{
           <tr>
             <th className='border text-start '>Remove Product</th>
             
-            <td className='border flex flex-col'><span>with 0.4%</span><button className='text-[12px] bg-gray-300 p-2 w-[60%]'>Save Button</button></td>
+            <td className='border flex flex-col'><span>with 0.4%</span><button className='text-[12px] bg-gray-300 p-2 w-[60%]'>Save</button></td>
             
            </tr>
           <tr>
